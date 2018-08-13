@@ -370,6 +370,11 @@ class ObjectMapper {
         if ($type === 'string') {
             return $this->validateIsString($value);
         }
+
+        if ($type === 'long') {
+            return $this->validateIsLong($value);
+        }
+
         throw new JSONParseException("Unsupported type: $type");
     }
 
@@ -427,6 +432,19 @@ class ObjectMapper {
         }
         throw $this->couldNotConvertException($value, 'string');
     }
+
+    private function validateIsLong(&$value) {
+        if (is_int($value)) {
+            return $value;
+        }
+        if (ctype_digit(strval($value))) {
+            return intval($value);
+        }
+        throw $this->couldNotConvertException($value, 'long');
+    }
+
+
+
 
     private function couldNotConvertException(&$value, $type) {
         $valueType = gettype($value);

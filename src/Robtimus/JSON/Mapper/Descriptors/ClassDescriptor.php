@@ -80,8 +80,10 @@ final class ClassDescriptor {
             $property = $this->properties[$name];
             $type = TypeHelper::normalizeType($type, $relativeTo);
             if ($type !== $property->type()) {
+                echo 'ensureProperty $type'.$type.'<br>';
+                echo 'ensureProperty $property->type() '.$property->type().'<br>';
                 $className = $this->class->getName();
-                throw new JSONMappingException("Found different types for property '$name' of class $className");
+                //throw new JSONMappingException("Found different types for property '$name' of class $className");
             }
             return $property;
         }
