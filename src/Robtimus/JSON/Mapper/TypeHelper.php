@@ -72,7 +72,7 @@ final class TypeHelper {
     }
 
     static function isScalarType($type) {
-        static $simpleTypes = array('boolean', 'bool', 'integer', 'int', 'float', 'double', 'string');
+        static $simpleTypes = array('boolean', 'bool', 'integer', 'int', 'float', 'double', 'string', 'long');
         return in_array($type, $simpleTypes, true);
     }
 }
